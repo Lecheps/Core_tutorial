@@ -1,0 +1,183 @@
+#----------------------------------------------------------------------
+# Environment
+MKDIR=mkdir
+CP=cp
+GREP=grep
+NM=nm
+CCADMIN=CCadmin
+CC=gcc
+CCC=g++
+CXX=g++
+FC=gfortran
+AS=as
+RM=rm
+AR=ar
+RANLIB=ranlib
+#----------------------------------------------------------------------
+# Macros
+CND_PLATFORM=Windows
+CND_DLIB_EXT=dll
+CND_CONF=Release
+CND_DISTDIR=dist
+CND_BUILDDIR=build
+#----------------------------------------------------------------------
+# SOURCE FOLDERS
+BASEDIR=C:/workspace/JLG
+BOOSTDIR=C:/msys64/usr/local/boost_1_63_0
+TINYXMLDIR=C:/workspace/JLG/tinyxml2-master
+INCASRC=${BASEDIR}/INCA/src
+INCAINC=${BASEDIR}/INCA/include
+#----------------------------------------------------------------------
+# Projects to be built
+
+all: libdcore.a 
+
+#----------------------------------------------------------------------
+# SETTINGS FOR THE COMPIUATION OF THE CORE
+# Object Directory
+OBJECTDIR=${BASEDIR}/INCA/DCore/${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
+DISTDIR=${BASEDIR}/INCA/DCore/${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
+#Object files
+OBJECTFILESCORE= \
+	${OBJECTDIR}/Dascru.o \
+	${OBJECTDIR}/DataGroup.o \
+	${OBJECTDIR}/DataSet.o \
+	${OBJECTDIR}/Equation.o \
+	${OBJECTDIR}/EquationCumulative.o \
+	${OBJECTDIR}/EquationInitialValue.o \
+	${OBJECTDIR}/EquationInverse.o \
+	${OBJECTDIR}/EquationOde.o \
+	${OBJECTDIR}/EquationPre.o \
+	${OBJECTDIR}/File.o \
+	${OBJECTDIR}/FormatInput.o \
+	${OBJECTDIR}/FormatOutput.o \
+	${OBJECTDIR}/IndexerObserverObject.o \
+	${OBJECTDIR}/IndexerReach.o \
+	${OBJECTDIR}/IndexerStream.o \
+	${OBJECTDIR}/Model.o \
+	${OBJECTDIR}/ModelObject.o \
+	${OBJECTDIR}/ObserverSubject.o \
+	${OBJECTDIR}/ParameterBase.o \
+	${OBJECTDIR}/ParameterGroup.o \
+	${OBJECTDIR}/ParameterSet.o \
+	${OBJECTDIR}/SolverBase.o \
+	${OBJECTDIR}/SolverClassicInca.o \
+	${OBJECTDIR}/Units.o
+
+# CC Compiler Flags
+CCFLAGS=-Wall -ftemplate-backtrace-limit=0 -Wuninitialized -O3 -std=c++11
+CXXFLAGS=-Wall -ftemplate-backtrace-limit=0 -Wuninitialized -O3 -std=c++11
+
+#COMPILE
+COMPILE=$(CXX) -c $(CXXFLAGS)  
+
+libdcore.a: ${OBJECTFILESCORE}
+	${MKDIR} -p ${DISTDIR}
+	${RM} -f ${DISTDIR}/libdcore.a
+	${AR} -rv ${DISTDIR}/libdcore.a ${OBJECTFILESCORE} 
+	$(RANLIB) ${DISTDIR}/libdcore.a
+	
+
+${OBJECTDIR}/Dascru.o: ${INCASRC}/Dascru.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCAINC} -I${INCASRC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" ${INCASRC}/Dascru.cpp -o ${OBJECTDIR}/Dascru.o 
+
+
+${OBJECTDIR}/DataGroup.o: ${INCASRC}/DataGroup.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DataGroup.o ${INCASRC}/DataGroup.cpp
+
+
+${OBJECTDIR}/DataSet.o: ${INCASRC}/DataSet.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DataSet.o ${INCASRC}/DataSet.cpp
+
+${OBJECTDIR}/Equation.o: ${INCASRC}/Equation.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Equation.o ${INCASRC}/Equation.cpp
+
+${OBJECTDIR}/EquationCumulative.o: ${INCASRC}/EquationCumulative.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EquationCumulative.o ${INCASRC}/EquationCumulative.cpp
+
+${OBJECTDIR}/EquationInitialValue.o: ${INCASRC}/EquationInitialValue.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EquationInitialValue.o ${INCASRC}/EquationInitialValue.cpp
+
+${OBJECTDIR}/EquationInverse.o: ${INCASRC}/EquationInverse.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EquationInverse.o ${INCASRC}/EquationInverse.cpp
+
+${OBJECTDIR}/EquationOde.o: ${INCASRC}/EquationOde.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EquationOde.o ${INCASRC}/EquationOde.cpp
+
+${OBJECTDIR}/EquationPre.o: ${INCASRC}/EquationPre.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EquationPre.o ${INCASRC}/EquationPre.cpp
+
+${OBJECTDIR}/File.o: ${INCASRC}/File.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/File.o ${INCASRC}/File.cpp
+
+${OBJECTDIR}/FormatInput.o: ${INCASRC}/FormatInput.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FormatInput.o ${INCASRC}/FormatInput.cpp
+
+${OBJECTDIR}/FormatOutput.o: ${INCASRC}/FormatOutput.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FormatOutput.o ${INCASRC}/FormatOutput.cpp
+
+${OBJECTDIR}/IndexerObserverObject.o: ${INCASRC}/IndexerObserverObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IndexerObserverObject.o ${INCASRC}/IndexerObserverObject.cpp
+
+${OBJECTDIR}/IndexerReach.o: ${INCASRC}/IndexerReach.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IndexerReach.o ${INCASRC}/IndexerReach.cpp
+
+${OBJECTDIR}/IndexerStream.o: ${INCASRC}/IndexerStream.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IndexerStream.o ${INCASRC}/IndexerStream.cpp
+
+${OBJECTDIR}/Model.o: ${INCASRC}/Model.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Model.o ${INCASRC}/Model.cpp
+
+${OBJECTDIR}/ModelObject.o: ${INCASRC}/ModelObject.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ModelObject.o ${INCASRC}/ModelObject.cpp
+
+${OBJECTDIR}/ObserverSubject.o: ${INCASRC}/ObserverSubject.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ObserverSubject.o ${INCASRC}/ObserverSubject.cpp
+
+${OBJECTDIR}/ParameterBase.o: ${INCASRC}/ParameterBase.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ParameterBase.o ${INCASRC}/ParameterBase.cpp
+
+${OBJECTDIR}/ParameterGroup.o: ${INCASRC}/ParameterGroup.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ParameterGroup.o ${INCASRC}/ParameterGroup.cpp
+
+${OBJECTDIR}/ParameterSet.o: ${INCASRC}/ParameterSet.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ParameterSet.o ${INCASRC}/ParameterSet.cpp
+
+${OBJECTDIR}/SolverBase.o: ${INCASRC}/SolverBase.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SolverBase.o ${INCASRC}/SolverBase.cpp
+
+${OBJECTDIR}/SolverClassicInca.o: ${INCASRC}/SolverClassicInca.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SolverClassicInca.o ${INCASRC}/SolverClassicInca.cpp
+
+${OBJECTDIR}/Units.o: ${INCASRC}/Units.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	$(COMPILE) -I${INCASRC} -I${INCAINC} -I${TINYXMLDIR} -I${BOOSTDIR} -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Units.o ${INCASRC}/Units.cpp
+
+.PHONY : cleanCore
+cleanCore : 
+	${RM} -rf ${OBJECTDIR}
+	${RM} -f ${DISTDIR}/libdcore.a
+
