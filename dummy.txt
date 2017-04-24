@@ -1,0 +1,20 @@
+class dummyModel : public NIVA::CoreFramework::Model
+{
+public:
+    dummyModel()
+    {
+        NC::Model("Simple multiplier", "0.0.1", "Dummy model to illustrate how the core works");
+
+        //Adding equation
+        auto multiply = NC::Equation::create( "Multiply", dummyUnit );
+        (*multiply)
+        (
+            [&]() -> double
+            {
+                double temp = parameter("Multiplier") * input("Operand");
+                return temp;
+            }
+        );
+        addEquation( multiply );            
+    }
+};
